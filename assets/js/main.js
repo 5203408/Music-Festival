@@ -205,6 +205,38 @@
 
   });
 
+
+
+  /**
+   * Merchandise isotope and filter
+   */
+  window.addEventListener('load', () => {
+    let merchandiseContainer = select('.merchandise-container');
+    if (merchandiseContainer) {
+      let merchandiseIsotope = new Isotope(merchandiseContainer, {
+        itemSelector: '.merchandise-item',
+        layoutMode: 'fitRows'
+      });
+
+      let merchandiseFilters = select('#merchandise-flters li', true);
+
+      on('click', '#merchandise-flters li', function(e) {
+        e.preventDefault();
+        merchandiseFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+
+        merchandiseIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+      }, true);
+    }
+
+  });
+
+
+
   /**
    * Initiate work lightbox 
    */

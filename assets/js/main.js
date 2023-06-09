@@ -236,6 +236,35 @@
   });
 
 
+  /**
+   * Band isotope and filter
+   */
+  window.addEventListener('load', () => {
+    let bandContainer = select('.band-container');
+    if (bandContainer) {
+      let bandIsotope = new Isotope(bandContainer, {
+        itemSelector: '.band-item',
+        layoutMode: 'fitRows'
+      });
+
+      let bandFilters = select('#band-flters li', true);
+
+      on('click', '#band-flters li', function(e) {
+        e.preventDefault();
+        bandFilters.forEach(function(el) {
+          el.classList.remove('filter-active');
+        });
+        this.classList.add('filter-active');
+
+        bandIsotope.arrange({
+          filter: this.getAttribute('data-filter')
+        });
+      }, true);
+    }
+
+  });
+
+
 
   /**
    * Initiate work lightbox 
@@ -256,6 +285,8 @@
   /**
    * Work details slider
    */
+
+  
   new Swiper('.work-details-slider', {
     speed: 400,
     loop: true,
@@ -268,7 +299,12 @@
       type: 'bullets',
       clickable: true
     }
-  });
+  }); 
+
+
+
+
+
 
   /**
    * Initiate Pure Counter 

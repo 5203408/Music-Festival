@@ -430,6 +430,14 @@ section .container {
 /*--------------------------------------------------------------
 # Skills & Experience
 --------------------------------------------------------------*/
+
+
+table, th, td {
+  border:1px solid gray;
+}
+
+
+
 .skills .progress {
   height: 60px;
   display: block;
